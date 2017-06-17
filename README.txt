@@ -1,31 +1,13 @@
-For the latest information about Hadoop, please visit our website at:
+1. the rdd files are in hadoop-mapreduce-project/hadoop-mapreduce-client/hadoop-mapreduce-client-core/src/main/java/org/apache/hadoop/rdd
 
-   http://hadoop.apache.org/core/
+2. the page rank files are in hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples
 
-and our wiki, at:
+to build the project
 
-   http://wiki.apache.org/hadoop/
+$ mvn install -DskipTests
 
-This distribution includes cryptographic software.  The country in 
-which you currently reside may have restrictions on the import, 
-possession, use, and/or re-export to another country, of 
-encryption software.  BEFORE using any encryption software, please 
-check your country's laws, regulations and policies concerning the
-import, possession, or use, and re-export of encryption software, to 
-see if this is permitted.  See <http://www.wassenaar.org/> for more
-information.
+replace the hadoop-mapreduce-client-core-2.8.0.jar and hadoop-mapreduce-examples-2.8.0.jar in the hadoop path.
 
-The U.S. Government Department of Commerce, Bureau of Industry and
-Security (BIS), has classified this software as Export Commodity 
-Control Number (ECCN) 5D002.C.1, which includes information security
-software using or performing cryptographic functions with asymmetric
-algorithms.  The form and manner of this Apache Software Foundation
-distribution makes it eligible for export under the License Exception
-ENC Technology Software Unrestricted (TSU) exception (see the BIS 
-Export Administration Regulations, Section 740.13) for both object 
-code and source code.
+To run the pagerank on android:
 
-The following provides more details on the included cryptographic
-software:
-  Hadoop Core uses the SSL libraries from the Jetty project written 
-by mortbay.org.
+$ hadoop jar hadoop-mapreduce-examples-2.8.0.jar pagerank

@@ -27,16 +27,16 @@ import org.apache.hadoop.examples.terasort.TeraValidate;
 import org.apache.hadoop.util.ProgramDriver;
 
 /**
- * A description of an example program based on its class and a 
+ * A description of an example program based on its class and a
  * human-readable description.
  */
 public class ExampleDriver {
-  
+
   public static void main(String argv[]){
     int exitCode = -1;
     ProgramDriver pgd = new ProgramDriver();
     try {
-      pgd.addClass("wordcount", WordCount.class, 
+      pgd.addClass("wordcount", WordCount.class,
                    "A map/reduce program that counts the words in the input files.");
       pgd.addClass("wordmean", WordMean.class,
                    "A map/reduce program that counts the average length of the words in the input files.");
@@ -44,15 +44,15 @@ public class ExampleDriver {
                    "A map/reduce program that counts the median length of the words in the input files.");
       pgd.addClass("wordstandarddeviation", WordStandardDeviation.class,
                    "A map/reduce program that counts the standard deviation of the length of the words in the input files.");
-      pgd.addClass("aggregatewordcount", AggregateWordCount.class, 
+      pgd.addClass("aggregatewordcount", AggregateWordCount.class,
                    "An Aggregate based map/reduce program that counts the words in the input files.");
-      pgd.addClass("aggregatewordhist", AggregateWordHistogram.class, 
+      pgd.addClass("aggregatewordhist", AggregateWordHistogram.class,
                    "An Aggregate based map/reduce program that computes the histogram of the words in the input files.");
-      pgd.addClass("grep", Grep.class, 
+      pgd.addClass("grep", Grep.class,
                    "A map/reduce program that counts the matches of a regex in the input.");
-      pgd.addClass("randomwriter", RandomWriter.class, 
+      pgd.addClass("randomwriter", RandomWriter.class,
                    "A map/reduce program that writes 10GB of random data per node.");
-      pgd.addClass("randomtextwriter", RandomTextWriter.class, 
+      pgd.addClass("randomtextwriter", RandomTextWriter.class,
       "A map/reduce program that writes 10GB of random textual data per node.");
       pgd.addClass("sort", Sort.class, "A map/reduce program that sorts the data written by the random writer.");
 
@@ -71,13 +71,23 @@ public class ExampleDriver {
       pgd.addClass("teragen", TeraGen.class, "Generate data for the terasort");
       pgd.addClass("terasort", TeraSort.class, "Run the terasort");
       pgd.addClass("teravalidate", TeraValidate.class, "Checking results of terasort");
+      pgd.addClass("pagerank",PageRank.class,"PageRank");
+      pgd.addClass("rddpagerank",RDDPageRank.class,"RDDPageRank");
+
+      long startTime = System.nanoTime();
+
       exitCode = pgd.run(argv);
+
+      System.out.println("Job finished!");
+      long estimatedTime = System.nanoTime() - startTime;
+      System.out.println("Job runtime:"+(double)estimatedTime/1000000000+" second");
     }
+
     catch(Throwable e){
       e.printStackTrace();
     }
-    
+
     System.exit(exitCode);
   }
 }
-	
+
